@@ -71,6 +71,12 @@
   & img { width: 100%; height: 100%; object-fit: cover; display: block; }
 }
 
+@media (hover: hover) {
+  .poster:hover .poster-overlay {
+    opacity: 1 !important;
+  }
+}
+
 @utility logo-accent {
   color: oklch(0.62 0.24 25);
 }

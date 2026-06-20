@@ -136,7 +136,7 @@ function FeaturedCard({ src, title, meta, desc, payout }: { src: string; title: 
         <div className="text-4xl sm:text-5xl font-bold text-money mb-1">${payout.toFixed(2)}</div>
         <div className="text-sm text-muted-foreground mb-6">Review payout</div>
         <button className="rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold hover:scale-105 transition-transform shadow-lg">
-          Start Reviewer
+          Watch & Review
         </button>
       </div>
       <button aria-label="Play" className="absolute bottom-5 right-5 z-30 size-12 sm:size-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
@@ -150,24 +150,24 @@ function PosterCard({ item }: { item: Item }) {
   const [open, setOpen] = useState(false);
   return (
     <div
-      className="group poster aspect-[2/3] relative overflow-hidden cursor-pointer"
+      className="poster aspect-[2/3] relative overflow-hidden cursor-pointer"
       onClick={() => setOpen(o => !o)}
     >
       <img src={item.src} alt={item.title} loading="lazy" />
-      {/* Always-visible bottom strip on mobile (hidden when overlay is open) */}
-      <div className={`absolute bottom-0 inset-x-0 z-10 bg-gradient-to-t from-black/90 to-transparent pt-8 pb-2 px-2 transition-opacity duration-200 sm:hidden ${open ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+      {/* Bottom info strip — always visible, hides when overlay opens */}
+      <div className={`absolute bottom-0 inset-x-0 z-10 bg-gradient-to-t from-black/90 to-transparent pt-8 pb-2 px-2 transition-opacity duration-200 ${open ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
         <p className="text-[10px] font-semibold leading-tight line-clamp-2 text-white/90">{item.title}</p>
         <p className="text-[11px] font-bold text-money">${item.payout.toFixed(2)}</p>
       </div>
-      {/* Overlay: hover on desktop, tap on mobile */}
-      <div className={`absolute inset-0 z-20 flex flex-col items-center justify-center text-center bg-black/80 p-3 transition-opacity duration-300 group-hover:opacity-100 ${open ? "opacity-100" : "opacity-0"}`}>
+      {/* Overlay — tap on mobile, hover on desktop via CSS in styles.css */}
+      <div className={`poster-overlay absolute inset-0 z-20 flex flex-col items-center justify-center text-center bg-black/80 p-3 transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"}`}>
         <div className="text-2xl sm:text-3xl font-bold text-money mb-0.5">${item.payout.toFixed(2)}</div>
         <div className="text-[10px] sm:text-xs text-muted-foreground mb-3">Review payout</div>
         <button
           className="rounded-full bg-primary text-primary-foreground px-4 py-2 text-xs sm:text-sm font-semibold hover:scale-105 transition-transform shadow-lg"
           onClick={e => e.stopPropagation()}
         >
-          Start Reviewer
+          Watch & Review
         </button>
         <p className="mt-3 text-xs sm:text-sm font-semibold leading-tight line-clamp-2">{item.title}</p>
       </div>
