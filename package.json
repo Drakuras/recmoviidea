@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "deploy": "bun run build && wrangler deploy"
+    "deploy": "git add -A && git commit -m 'chore: deploy' && git push && bun run build && wrangler deploy"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
